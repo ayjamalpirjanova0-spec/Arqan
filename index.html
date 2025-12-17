@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="uz">
 <head>
   <meta charset="UTF-8" />
-  <title>Ikki jamoa animatsion o‘yini</title>
+  <title>Ikki jamoa animatsion o‘yini (MP4)</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -28,9 +28,11 @@
 
 #object {
   position: absolute;
-  top: 50px;
+  top: 40px;
   left: 310px;
-  width: 80px;
+  width: 90px;
+  height: auto;
+  pointer-events: none;
   transition: left 0.4s ease;
 }
 
@@ -57,7 +59,7 @@
 .team1 h2 { color: #1976d2; }
 .team2 h2 { color: #388e3c; }
 
-input {
+input[type="text"] {
   width: 90%;
   padding: 10px;
   font-size: 16px;
@@ -94,16 +96,18 @@ button:hover {
 </head>
 <body><h1>Ikki jamoa viktorina o‘yini</h1>
 <p>To‘g‘ri javob — animatsiya siz tomonga siljiydi</p><div class="upload">
-  <input type="file" accept="image/gif" onchange="loadGif(event)">
+  <input type="file" accept="video/mp4" onchange="loadVideo(event)">
 </div><div id="arena">
-  <img id="object" src="animatsiya.gif" />
+  <video id="object" autoplay loop muted playsinline>
+    <source src="animatsiya.mp4" type="video/mp4">
+  </video>
 </div><div class="panel">
   <div class="team team1">
-    <h2>1‑jamoa</h2>
+    <h2>1-jamoa</h2>
     <input type="text" placeholder="Javobni kiriting" id="ans1">
     <button class="btn1" onclick="team1Correct()">Javob to‘g‘ri</button>
   </div>  <div class="team team2">
-    <h2>2‑jamoa</h2>
+    <h2>2-jamoa</h2>
     <input type="text" placeholder="Javobni kiriting" id="ans2">
     <button class="btn2" onclick="team2Correct()">Javob to‘g‘ri</button>
   </div>
@@ -126,11 +130,11 @@ button:hover {
 
   function checkOut() {
     if (obj.offsetLeft + obj.offsetWidth < 0) {
-      alert('1‑jamoa g‘alaba qozondi!');
+      alert('1-jamoa g‘alaba qozondi!');
       reset();
     }
     if (obj.offsetLeft > arena.offsetWidth) {
-      alert('2‑jamoa g‘alaba qozondi!');
+      alert('2-jamoa g‘alaba qozondi!');
       reset();
     }
   }
@@ -139,8 +143,11 @@ button:hover {
     obj.style.left = '310px';
   }
 
-  function loadGif(event) {
-    obj.src = URL.createObjectURL(event.target.files[0]);
+  function loadVideo(event) {
+    const file = event.target.files[0];
+    const source = obj.querySelector('source');
+    source.src = URL.createObjectURL(file);
+    obj.load();
   }
 </script></body>
-  </html>
+</html>
