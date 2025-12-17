@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="uz">
+
+<!DOCTYPE html>
+<html lang="uz">
 <head>
   <meta charset="UTF-8" />
   <title>Ikki jamoa animatsion o‘yini (MP4)</title>
@@ -9,109 +11,121 @@
       text-align: center;
       margin: 0;
       padding: 0;
-    }h1 {
-  margin-top: 20px;
-  color: #333;
-}
+    }
 
-#arena {
-  position: relative;
-  width: 700px;
-  height: 180px;
-  margin: 30px auto;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  overflow: hidden;
-  border: 3px solid #444;
-}
+    h1 {
+      margin-top: 20px;
+      color: #333;
+    }
 
-#object {
-  position: absolute;
-  top: 40px;
-  left: 310px;
-  width: 90px;
-  height: auto;
-  pointer-events: none;
-  transition: left 0.4s ease;
-}
+    #arena {
+      position: relative;
+      width: 700px;
+      height: 180px;
+      margin: 30px auto;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+      border: 3px solid #444;
+    }
 
-.panel {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
+    #object {
+      position: absolute;
+      top: 20px;
+      left: 280px;
+      width: 150px; /* kattalashtirildi */
+      height: auto;
+      pointer-events: none;
+      transition: left 0.4s ease;
+    }
 
-.team {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  width: 260px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
+    .panel {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
 
-.team h2 {
-  margin-top: 0;
-}
+    .team {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      width: 260px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
 
-.team1 h2 { color: #1976d2; }
-.team2 h2 { color: #388e3c; }
+    .team h2 {
+      margin-top: 0;
+    }
 
-input[type="text"] {
-  width: 90%;
-  padding: 10px;
-  font-size: 16px;
-  margin: 10px 0;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  text-align: center;
-}
+    .team1 h2 { color: #1976d2; }
+    .team2 h2 { color: #388e3c; }
 
-button {
-  width: 95%;
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  color: white;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+    input[type="text"] {
+      width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-}
+    button {
+      width: 95%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      color: white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-.btn1 { background: linear-gradient(135deg, #2196f3, #1e88e5); }
-.btn2 { background: linear-gradient(135deg, #4caf50, #43a047); }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
 
-.upload {
-  margin-bottom: 20px;
-}
+    .btn1 { background: linear-gradient(135deg, #2196f3, #1e88e5); }
+    .btn2 { background: linear-gradient(135deg, #4caf50, #43a047); }
+
+    .upload {
+      margin-bottom: 20px;
+    }
 
   </style>
 </head>
-<body><h1>Ikki jamoa viktorina o‘yini</h1>
-<p>To‘g‘ri javob — animatsiya siz tomonga siljiydi</p><div class="upload">
-  <input type="file" accept="video/mp4" onchange="loadVideo(event)">
-</div><div id="arena">
+<body>
+
+<h1>Arqan tartıs</h1>
+<p>Kùsh bilimde</p>
+
+
+
+<div id="arena">
   <video id="object" autoplay loop muted playsinline>
     <source src="animatsiya.mp4" type="video/mp4">
   </video>
-</div><div class="panel">
+</div>
+
+<div class="panel">
   <div class="team team1">
-    <h2>1-jamoa</h2>
-    <input type="text" placeholder="Javobni kiriting" id="ans1">
-    <button class="btn1" onclick="team1Correct()">Javob to‘g‘ri</button>
-  </div>  <div class="team team2">
-    <h2>2-jamoa</h2>
-    <input type="text" placeholder="Javobni kiriting" id="ans2">
-    <button class="btn2" onclick="team2Correct()">Javob to‘g‘ri</button>
+    <h2>1-topar</h2>
+    <input type="text" placeholder="Juwaptı kiritiń" id="ans1">
+    <button class="btn1" onclick="team1Correct()">Durıs juwap</button>
   </div>
-</div><script>
+
+  <div class="team team2">
+    <h2>2-topar</h2>
+    <input type="text" placeholder="Juwaptı kiritiń" id="ans2">
+    <button class="btn2" onclick="team2Correct()">Durıs juwap</button>
+  </div>
+</div>
+
+<script>
   const obj = document.getElementById('object');
   const arena = document.getElementById('arena');
   const step = 60;
@@ -130,11 +144,11 @@ button:hover {
 
   function checkOut() {
     if (obj.offsetLeft + obj.offsetWidth < 0) {
-      alert('1-jamoa g‘alaba qozondi!');
+      alert('1-topar jeńimpaz boldı!');
       reset();
     }
     if (obj.offsetLeft > arena.offsetWidth) {
-      alert('2-jamoa g‘alaba qozondi!');
+      alert('2-topar jeńimpaz boldı!');
       reset();
     }
   }
@@ -149,5 +163,8 @@ button:hover {
     source.src = URL.createObjectURL(file);
     obj.load();
   }
-</script></body>
+</script>
+
+</body>
 </html>
+
