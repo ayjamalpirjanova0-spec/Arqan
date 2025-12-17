@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ikki jamoa animatsion o‘yini</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }h1 {
+  margin-top: 20px;
+  color: #333;
+}
+
+#arena {
+  position: relative;
+  width: 700px;
+  height: 180px;
+  margin: 30px auto;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  overflow: hidden;
+  border: 3px solid #444;
+}
+
+#object {
+  position: absolute;
+  top: 50px;
+  left: 310px;
+  width: 80px;
+  transition: left 0.4s ease;
+}
+
+.panel {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.team {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  width: 260px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.team h2 {
+  margin-top: 0;
+}
+
+.team1 h2 { color: #1976d2; }
+.team2 h2 { color: #388e3c; }
+
+input {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+button {
+  width: 95%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+.btn1 { background: linear-gradient(135deg, #2196f3, #1e88e5); }
+.btn2 { background: linear-gradient(135deg, #4caf50, #43a047); }
+
+.upload {
+  margin-bottom: 20px;
+}
+
+  </style>
+</head>
+<body><h1>Ikki jamoa viktorina o‘yini</h1>
+<p>To‘g‘ri javob — animatsiya siz tomonga siljiydi</p><div class="upload">
+  <input type="file" accept="image/gif" onchange="loadGif(event)">
+</div><div id="arena">
+  <img id="object" src="animatsiya.gif" />
+</div><div class="panel">
+  <div class="team team1">
+    <h2>1‑jamoa</h2>
+    <input type="text" placeholder="Javobni kiriting" id="ans1">
+    <button class="btn1" onclick="team1Correct()">Javob to‘g‘ri</button>
+  </div>  <div class="team team2">
+    <h2>2‑jamoa</h2>
+    <input type="text" placeholder="Javobni kiriting" id="ans2">
+    <button class="btn2" onclick="team2Correct()">Javob to‘g‘ri</button>
+  </div>
+</div><script>
+  const obj = document.getElementById('object');
+  const arena = document.getElementById('arena');
+  const step = 60;
+
+  function team1Correct() {
+    obj.style.left = (obj.offsetLeft - step) + 'px';
+    checkOut();
+    document.getElementById('ans1').value = '';
+  }
+
+  function team2Correct() {
+    obj.style.left = (obj.offsetLeft + step) + 'px';
+    checkOut();
+    document.getElementById('ans2').value = '';
+  }
+
+  function checkOut() {
+    if (obj.offsetLeft + obj.offsetWidth < 0) {
+      alert('1‑jamoa g‘alaba qozondi!');
+      reset();
+    }
+    if (obj.offsetLeft > arena.offsetWidth) {
+      alert('2‑jamoa g‘alaba qozondi!');
+      reset();
+    }
+  }
+
+  function reset() {
+    obj.style.left = '310px';
+  }
+
+  function loadGif(event) {
+    obj.src = URL.createObjectURL(event.target.files[0]);
+  }
+</script></body>
+  </html>
